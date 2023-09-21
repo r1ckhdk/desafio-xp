@@ -54,7 +54,7 @@ Siga estas instruções para configurar e instalar as dependências do projeto.
 ## Executando a aplicação
 
    ```shell
-   streamlit desafio_xp.py
+   streamlit run desafio_xp.py
    ```
 
 ## Executando a aplicação como container Docker
