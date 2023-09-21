@@ -2,7 +2,7 @@ import streamlit as st
 from openai.error import APIError, AuthenticationError, RateLimitError
 from open_ai.ll_album_genius import album_recommender_chain
 
-st.title('AlbumGenius')
+st.title(':cd: AlbumGenius')
 st.markdown(
     """
     Está interessado em conhecer sobre um artista ou banda mas não sabe por onde começar?\n

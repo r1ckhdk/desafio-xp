@@ -2,7 +2,7 @@ import streamlit as st
 from openai.error import APIError, AuthenticationError, RateLimitError
 from open_ai.llm_eli5 import eli5_chain
 
-st.title('Explain Like I\'m Five')
+st.title(':memo: Explain Like I\'m Five')
 st.markdown(
     """
     :gray[Traduzido como ***Explique-me como se eu tivesse cinco anos***, o ELI5 é um método para explicar conceitos complexos
