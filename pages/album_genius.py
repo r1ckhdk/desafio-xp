@@ -1,6 +1,6 @@
 import streamlit as st
+from openai.error import APIError, AuthenticationError, RateLimitError
 from open_ai.ll_album_genius import album_recommender_chain
-from openai.error import RateLimitError
 
 st.title('AlbumGenius')
 st.markdown(
@@ -19,10 +19,23 @@ if st.button('Enviar!') and user_input:
             response: str = album_recommender_chain.run(artists=user_input)
             st.write(response)
 
-    except RateLimitError as e:
-        print(e)
+    except APIError as e:
         st.markdown(
             e.code,
-            """:red[Erro:] Você atingiu o limite de chamadas à API da OpenAI.
-            """
+            ":red[Erro]: Houve um erro de API da OpenAI. Tente novamente em instantes."
         )
+        print(e)
+
+    except RateLimitError as e:
+        st.markdown(
+            e.code,
+            ":red[Erro]: Você atingiu o limite de chamadas à API da OpenAI. Verifique sua cota de requisições."
+        )
+        print(e)
+
+    except AuthenticationError as e:
+        st.markdown(
+            e.code,
+            ":red[Erro]: Houve um erro de autenticação. Verifique sua chave API."
+        )
+        print(e)

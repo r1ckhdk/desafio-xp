@@ -7,7 +7,7 @@ load_dotenv()
 OPENAI_API_KEY = getenv('OPENAI_API_KEY')
 
 llm: ChatOpenAI = ChatOpenAI(
-    temperature=0.8,
+    temperature=0.9,
     openai_api_key=OPENAI_API_KEY,
 )
 
