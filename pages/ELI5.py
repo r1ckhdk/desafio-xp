@@ -16,7 +16,7 @@ st.markdown(
 
 user_input: str = st.text_input('Insira uma pergunta ou assunto')
 
-if st.button("Explique!") and user_input:
+if st.button('Enviar!') and user_input:
     try:
         with st.spinner("Gerando explicação..."):
             response: str = eli5_chain.run(subject=user_input)
@@ -24,21 +24,18 @@ if st.button("Explique!") and user_input:
 
     except APIError as e:
         st.markdown(
-            e.code,
-            ":red[Erro]: Houve um erro de API da OpenAI. Tente novamente em instantes."
+            ":red[**Erro**]: Houve um erro de API da OpenAI. Tente novamente em instantes."
         )
         print(e)
 
     except RateLimitError as e:
         st.markdown(
-            e.code,
-            ":red[Erro]: Você atingiu o limite de chamadas à API da OpenAI. Verifique sua cota de requisições."
+            ":red[**Erro**]: Você atingiu o limite de chamadas à API da OpenAI. Verifique sua cota de requisições."
         )
         print(e)
 
     except AuthenticationError as e:
         st.markdown(
-            e.code,
-            ":red[Erro]: Houve um erro de autenticação. Verifique sua chave API."
+            ":red[**Erro**]: Houve um erro de autenticação. Verifique sua chave API."
         )
         print(e)
